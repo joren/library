@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @book.title %>
+</p>
+
+<p>
+  <strong>Introduction:</strong>
+  <%= @book.introduction %>
+</p>
+
+<p>
+  <strong>Book:</strong>
+  <%= link_to "download", rails_blob_path(@book.book) %>
+</p>
+
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Back', books_path %>
