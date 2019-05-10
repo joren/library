@@ -2,6 +2,8 @@ class Book < ApplicationRecord
   has_one_attached :book
   has_many_attached :images
 
+  belongs_to :user
+
   after_create :parse_epub!, if: -> { epub? }
 
   def epub?

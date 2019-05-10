@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2017_12_17_113516) do
+ActiveRecord::Schema.define(version: 2019_05_10_172738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,19 @@ ActiveRecord::Schema.define(version: 2017_12_17_113516) do
     t.string "author"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_books_on_user_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "name", null: false
+    t.string "auth_token"
+    t.datetime "auth_token_expires_at"
+    t.boolean "can_invite_users", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "books", "users"
 end
