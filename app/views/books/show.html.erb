@@ -10,6 +10,10 @@
   <%= @book.introduction %>
 </p>
 
+<% @book.images.each do |image| %>
+  <%= image_tag(image) %>
+<% end %>
+
 <p>
   <strong>Book:</strong>
   <%= link_to "download", rails_blob_path(@book.book) %>
