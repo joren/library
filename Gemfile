@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.4.4'
 
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'bootstrap', '~> 4.2.1'
+gem 'bootstrap', '~> 4.3.1'
 gem 'coffee-rails', '~> 4.2'
 gem 'epub-parser', '~> 0.3.2'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
