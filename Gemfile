@@ -1,17 +1,18 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.3.1'
+ruby '2.4.4'
 
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'bootstrap', '~> 4.0.0.beta2.1'
+gem 'bootstrap', '~> 4.2.1'
 gem 'coffee-rails', '~> 4.2'
+gem 'epub-parser', '~> 0.3.2'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'mini_magick', '~> 4.8'
-gem 'mini_racer', platforms: :ruby
+gem 'mini_racer', '~> 0.2.4'
 gem 'pg', '~> 0.21.0'
 gem 'puma', '~> 3.11'
-gem 'rails', '~> 5.2.0.beta2'
+gem 'rails', '~> 5.2.3'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
@@ -22,6 +23,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  gem 'pry', '~> 0.11.3'
 end
 
 group :development do
