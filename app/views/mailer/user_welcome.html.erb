@@ -1,0 +1,7 @@
+<p>Hi <%= @user.name %></p>
+
+<p>
+  You have been granted access to our library.
+  <br>
+  Follow this url to get in: <%= login_url(@user.auth_token) %>
+</p>
