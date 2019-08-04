@@ -5,13 +5,13 @@ ruby '2.6.3'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.3.1'
-gem 'coffee-rails', '~> 4.2'
-gem 'epub-parser', '~> 0.3.2'
+gem 'coffee-rails', '~> 5.0.0'
+gem 'epub-parser', '~> 0.4.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'mini_magick', '~> 4.8'
 gem 'mini_racer', '~> 0.2.4'
-gem 'pg', '~> 0.21.0'
-gem 'puma', '~> 3.11'
+gem 'pg', '~> 1.1'
+gem 'puma', '~> 4.0'
 gem 'rails', '~> 5.2.3'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
@@ -19,7 +19,7 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'pry', '~> 0.11.3'
+  gem 'pry', '~> 0.12'
   gem 'letter_opener', '~> 1.7'
 end
 
