@@ -6,6 +6,10 @@ class Book < ApplicationRecord
 
   after_create :parse_epub!, if: -> { epub? }
 
+  def cover
+    images.first
+  end
+
   def epub?
     book.content_type.match?(/epub/)
   end

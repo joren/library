@@ -1,0 +1,9 @@
+.card style=("width: 9rem;")
+  - if book.cover
+    center
+      = link_to book do
+        = image_tag(book.cover.variant(resize: "186"), alt: book.title)
+  .card-body
+    h5.card-title
+      small.text-muted By:
+      =< book.user.name
