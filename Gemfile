@@ -14,6 +14,8 @@ gem 'pg', '~> 1.1'
 gem 'puma', '~> 4.0'
 gem 'rails', '~> 5.2.3'
 gem 'sass-rails', '~> 5.0'
+gem 'slim', '~> 4.0', '>= 4.0.1'
+gem 'slim-rails', '~> 3.2'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 
