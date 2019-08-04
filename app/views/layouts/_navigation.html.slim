@@ -1,0 +1,21 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  = link_to "Library", :root, class: "navbar-brand"
+  button.navbar-toggler aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarSupportedContent" data-toggle="collapse" type="button" 
+    span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        = link_to :root, class: "nav-link" do
+          | Home
+          span.sr-only (current)
+    - if user_logged_in?
+      ul.navbar-nav
+        li.nav-item
+          = link_to "Upload", [:new, :book], class: "nav-link btn btn-sm btn-outline-secondary"
+        li.nav-item.dropdown
+          a#navbarDropdown.nav-link.dropdown-toggle.btn.btn-link aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+            = current_user.name.titleize
+          .dropdown-menu aria-labelledby="navbarDropdown"
+            = link_to "Your books", "", class: "dropdown-item"
+            .dropdown-divider
+            = link_to "Logout", :logout, class: "dropdown-item"
