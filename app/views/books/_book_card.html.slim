@@ -4,6 +4,7 @@
   .card-body.d-flex.flex-column.align-items-start.position-relative
     h5.card-title
       = link_to book.title, book, class: "text-dark"
+    .card-text.font-weight-bold = book.author
     .card-text This is a wider card with supporting text below as a natural lead-in to additional content.
     .card-text.fixed-bottom.position-relative
       small.text-muted.text-lighter = "Uploaded by: #{book.user.name}"
