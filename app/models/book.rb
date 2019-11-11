@@ -8,7 +8,7 @@ class Book < ApplicationRecord
   after_create :parse_epub!, if: -> { epub? }
 
   def cover
-    images.first
+    images.find(cover_id) if cover_id
   end
 
   def epub?
@@ -34,6 +34,8 @@ class Book < ApplicationRecord
           cover_file = File.open("#{Rails.root}/tmp/#{item.href.to_s.parameterize}", "wb") { |f| f.write(item.read); f }
           self.images.attach(io: File.open(cover_file.path), filename: item.href.to_s, content_type: item.media_type)
         end
+
+        update(cover_id: images.first.id) if images.any?
 
         file.close
         file.unlink

@@ -24,7 +24,7 @@ class BooksController < ApplicationController
     @book = current_user.books.new(book_params)
 
     if @book.save
-      redirect_to @book, notice: 'Book was successfully created.'
+      redirect_to [:edit, @book], notice: 'Book was successfully created. Please check if the info is correct'
     else
       render :new
     end
@@ -49,6 +49,6 @@ class BooksController < ApplicationController
     end
 
     def book_params
-      params.require(:book).permit(:title, :introduction, :book)
+      params.require(:book).permit(:title, :introduction, :book, :author, :cover_id)
     end
 end
