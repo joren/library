@@ -39,5 +39,21 @@ class Book < ApplicationRecord
         file.unlink
       end
     end
+
+    complete_with_goodreads! if isbn.present? || title.present?
+  end
+
+  def complete_with_goodreads!
+    goodreads_book = Goodreads::Client.new.book_by_title(title)
+
+    update!(
+      introduction: goodreads_book.description,
+      goodreads_rating: goodreads_book.average_rating,
+      goodreads_url: goodreads_book.url,
+      pages: goodreads_book.num_pages,
+      isbn: goodreads_book.isbn13
+    )
+  rescue Goodreads::NotFound
+    return true # Ignore when book not found
   end
 end

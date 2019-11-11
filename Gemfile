@@ -7,6 +7,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.3.1'
 gem 'coffee-rails', '~> 5.0.0'
 gem 'epub-parser', '~> 0.4.0'
+gem 'goodreads'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'mini_magick', '~> 4.8'
