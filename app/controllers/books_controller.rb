@@ -3,6 +3,10 @@ class BooksController < ApplicationController
 
   # GET /books
   def index
+    @books = Book.order(created_at: :desc).page(params[:page])
+  end
+
+  def recent
     @recent_books = Book.order(created_at: :desc).limit(10)
   end
 

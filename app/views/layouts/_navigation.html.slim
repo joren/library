@@ -4,14 +4,12 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
     span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
-      li.nav-item.active
-        = link_to :root, class: "nav-link" do
-          | Home
-          span.sr-only (current)
+      li.nav-item = link_to "All books", :books, class: "nav-link"
+      - if user_logged_in?
+        li.nav-item
+          = link_to "Upload", [:new, :book], class: "nav-link"
     - if user_logged_in?
       ul.navbar-nav
-        li.nav-item
-          = link_to "Upload", [:new, :book], class: "nav-link btn btn-sm btn-outline-secondary"
         li.nav-item.dropdown
           a#navbarDropdown.nav-link.dropdown-toggle.btn.btn-link aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
             = current_user.name.titleize
