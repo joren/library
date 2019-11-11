@@ -7,6 +7,12 @@ class Book < ApplicationRecord
 
   after_create :parse_epub!, if: -> { epub? }
 
+  class << self
+    def search(query)
+      where("title LIKE :query OR author LIKE :query", query: "%#{query}%")
+    end
+  end
+
   def cover
     images.find(cover_id) if cover_id
   end
