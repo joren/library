@@ -9,6 +9,12 @@ class BooksController < ApplicationController
     @recent_books = Book.order(created_at: :desc).limit(10)
   end
 
+  def user
+    @user = User.find(params[:user_id])
+    @books = @user.books.order(created_at: :desc).page(params[:page])
+    render :index
+  end
+
   def show
     @book = Book.find(params[:id])
   end

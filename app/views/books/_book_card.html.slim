@@ -7,4 +7,6 @@
     .card-text.font-weight-bold = book.author
     .card-text = sanitize(book.introduction.truncate_words(25))
     .card-text.fixed-bottom.position-relative
-      small.text-muted.text-lighter = "Uploaded by: #{book.user.name}"
+      small.text-muted.text-lighter
+        | Uploaded by:
+        =< link_to book.user.name, [:user, :books, user_id: book.user]

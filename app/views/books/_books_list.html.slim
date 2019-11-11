@@ -1,0 +1,22 @@
+table.table.table-striped
+  thead
+    tr
+      th &nbsp;
+      th Title
+      th Author
+      th Added
+  tbody
+    - books.each do |book|
+      tr
+        td = link_to(image_tag(book.cover.variant(resize: "30x80")), book)
+        td = link_to book.title, book
+        td = book.author
+        td.text-muted.font-weight-light
+          | By
+          strong=<> link_to book.user.name, [:user, :books, user_id: book.user]
+          | on
+          strong=< book.created_at.to_date
+
+  tfoot
+    tr
+      td colspan=4 = paginate(books)
