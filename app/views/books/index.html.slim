@@ -1,7 +1,7 @@
-h1 Books
 h2 Recent books
 
 .row
   - @recent_books.each do |book|
-    .col-sm-2
-      = render "book_card", book: book
+    .col-md-6
+      .card-deck
+        = render "book_card", book: book

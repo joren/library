@@ -1,9 +1,9 @@
-.card style=("width: 9rem;")
-  - if book.cover
-    center
-      = link_to book do
-        = image_tag(book.cover.variant(resize: "186"), alt: book.title)
-  .card-body
+.card.flex-md-row.mb-4.shadow-sm.h-md-250
+  = link_to book do
+    = image_tag(book.cover.variant(resize: "140x245"), alt: book.title, class: "card-img-left flex-auto d-none d-lg-block")
+  .card-body.d-flex.flex-column.align-items-start.position-relative
     h5.card-title
-      small.text-muted By:
-      =< book.user.name
+      = link_to book.title, book, class: "text-dark"
+    .card-text This is a wider card with supporting text below as a natural lead-in to additional content.
+    .card-text.fixed-bottom.position-relative
+      small.text-muted.text-lighter = "Uploaded by: #{book.user.name}"
