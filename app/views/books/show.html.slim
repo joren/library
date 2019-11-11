@@ -1,0 +1,30 @@
+.row.mt-3
+  .col-4
+  .col-8
+    h2 = @book.title
+
+.row
+  .col-4.text-center
+    = image_tag @book.cover.variant(resize: "250x600"), alt: @book.title
+    .mt-3
+      = link_to "download", rails_blob_path(@book.book), class: "btn btn-primary"
+      - if @book.user == current_user
+        = link_to "edit", [:edit, @book], class: "btn btn-secondary ml-2"
+  .col-8
+    = sanitize(@book.introduction)
+
+    h4.mt-3 Info
+    dl
+      dt Uploaded by
+      dd = @book.user.name
+      dt Uploaded at
+      dd = @book.created_at
+      - if @book.pages
+        dt Pages
+        dd = @book.pages
+      - if @book.goodreads_rating
+        dt Rating:
+        dd = @book.goodreads_rating
+      - if @book.goodreads_url
+        dt Goodreads link
+        dd = link_to @book.goodreads_url, @book.goodreads_url, target: "_blank"
