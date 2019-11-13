@@ -5,12 +5,12 @@ class Mailer < ActionMailer::Base
   def user_login_requested(user)
     @user = user
 
-    mail(to: @user.email, subject: 'Books login requested')
+    mail(to: @user.email, subject: 'Login link voor onze bibliotheek.')
   end
 
   def user_welcome(user)
     @user = user
 
-    mail(to: @user.email, subject: "Welcome to our books library")
+    mail(to: @user.email, subject: "Hoera! Toegang voor onze gedeelde bibliotheek")
   end
 end
