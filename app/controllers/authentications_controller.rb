@@ -5,12 +5,17 @@ class AuthenticationsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:email])
-    if user
-      user.generate_auth_token
-      user.save!
-      Mailer.user_login_requested(user).deliver_now
+    if params[:email].present?
+      user = User.find_by(email: params[:email])
+      if user
+        user.generate_auth_token
+        user.save!
+        Mailer.user_login_requested(user).deliver_now
+      end
+      redirect_to [:new, :authentication], notice: "Er is een email onderweg met daarin een link om in te loggen."
+    else
+      flash[:error] = "Gelieve een geldig email adres in te geven"
+      redirect_to [:new, :authentication]
     end
-    redirect_to [:new, :authentication], notice: "We have send you an email with a link to log back in."
   end
 end

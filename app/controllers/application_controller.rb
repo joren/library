@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :login_required
 
   def login_required
-    return redirect_to([:new, :authentication], notice: "Please login in first") unless user_logged_in?
+    return redirect_to([:new, :authentication], notice: "Gelieve eerst in te loggen") unless user_logged_in?
   end
 
   def user_logged_in?

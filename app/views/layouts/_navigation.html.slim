@@ -1,10 +1,10 @@
 nav.navbar.navbar-expand-lg.navbar-light.bg-light
-  = link_to "Library", :root, class: "navbar-brand"
-  button.navbar-toggler aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarSupportedContent" data-toggle="collapse" type="button" 
+  = link_to "Bibliotheek", :root, class: "navbar-brand"
+  button.navbar-toggler aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarSupportedContent" data-toggle="collapse" type="button"
     span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
-      li.nav-item = link_to "All books", :books, class: "nav-link"
+      li.nav-item = link_to "Alle boeken", :books, class: "nav-link"
       - if user_logged_in?
         li.nav-item
           = link_to "Upload", [:new, :book], class: "nav-link"
@@ -14,6 +14,6 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
           a#navbarDropdown.nav-link.dropdown-toggle.btn.btn-link aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
             = current_user.name.titleize
           .dropdown-menu aria-labelledby="navbarDropdown"
-            = link_to "Your books", [:user, :books, user_id: current_user], class: "dropdown-item"
+            = link_to "Mijn boeken", [:user, :books, user_id: current_user], class: "dropdown-item"
             .dropdown-divider
-            = link_to "Logout", :logout, class: "dropdown-item"
+            = link_to "Uitloggen", :logout, class: "dropdown-item"

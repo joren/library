@@ -2,9 +2,9 @@ table.table.table-striped
   thead
     tr
       th &nbsp;
-      th Title
-      th Author
-      th Added
+      th Titel
+      th Auteur
+      th Toegevoegd
   tbody
     - books.each do |book|
       tr
@@ -12,9 +12,9 @@ table.table.table-striped
         td = link_to book.title, book
         td = book.author
         td.text-muted.font-weight-light
-          | By
+          | Door
           strong=<> link_to book.user.name, [:user, :books, user_id: book.user]
-          | on
+          | op
           strong=< book.created_at.to_date
 
   tfoot

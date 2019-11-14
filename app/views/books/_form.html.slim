@@ -4,32 +4,32 @@
       div#error_explanation
         h2
           = pluralize(book.errors.count, "error")
-          | prohibited this book from being saved:
+          | volgende problemen hebben voorkomen dat we het boek konden opslaan:
 
         ul
           - book.errors.full_messages.each do |message|
             li = message
     - if @book.new_record?
       .form-group
-        = form.label :book
+        = form.label :book, "Epub bestand"
         = form.file_field :book, class: "form-control-file"
-        small.form-text.text-muted Only upload epub books that are not password protected, we'll try and fetch the title and cover from the file.
+        small.form-text.text-muted Upload enkel epub boeken die niet beveiligd zijn met een wachtwoord.
     - else
       .form-group
-        = form.label :title
+        = form.label :title, "Titel"
         = form.text_field :title, class: "form-control"
       .form-group
-        = form.label :author
+        = form.label :author, "Author"
         = form.text_field :author, class: "form-control"
       .form-group
-        = form.label :introduction
+        = form.label :introduction, "Omschrijving"
         = form.text_area :introduction, value: form.object.introduction, class: "form-control"
       .firm-group
-        h5 Please select the correct cover
+        h5 Selecteer de juiste omslag
       - @book.images.each do |img|
         = label_tag do
           = form.radio_button :cover_id, img.id
           = image_tag(img.variant(resize: "120x230"))
 
     .form-group
-      = form.submit class: "btn btn-primary"
+      = form.submit "Opslaan", class: "btn btn-primary"

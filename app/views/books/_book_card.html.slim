@@ -8,5 +8,5 @@
     .card-text = sanitize(book.introduction.truncate_words(25))
     .card-text.fixed-bottom.position-relative
       small.text-muted.text-lighter
-        | Uploaded by:
+        | Geüpload door:
         =< link_to book.user.name, [:user, :books, user_id: book.user]

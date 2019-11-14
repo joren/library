@@ -1,4 +1,10 @@
-Hi <%= @user.name %>
+Hoi <%= @user.name %>
 
-You have been granted access to our library.
-Follow this url to get in: <%= login_url(@user.auth_token) %>
+Hoera!
+Je hebt vanaf nu toegang tot onze gedeelde bibliotheek.
+
+Klik snel op volgende link om verder te gaan
+<%= login_url(@user.auth_token) %>
+Let op, deze link is slechts 24u geldig.
+
+Veel leesplezier!

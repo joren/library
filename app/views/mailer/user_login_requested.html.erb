@@ -1,3 +1,8 @@
-<p>Hi <%= @user.name %></p>
+<p>Hoi <%= @user.name %></p>
 
-<p>Follow this link to authenticate: <%= login_url(@user.auth_token) %></p>
+<p>Via de volgende link kan je inloggen op onze gedeelde bibliotheek.</p>
+<p>Let op, deze link is slechts 24u geldig.</p>
+
+<p><%= login_url(@user.auth_token) %></p>
+
+<p>Veel leesplezier</p>

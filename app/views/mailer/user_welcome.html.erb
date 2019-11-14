@@ -1,7 +1,12 @@
-<p>Hi <%= @user.name %></p>
-
+<p>Hoi <%= @user.name %></p>
+<p>Hoera!</p>
+<p>Je hebt vanaf nu toegang tot onze gedeelde bibliotheek.<p>
 <p>
-  You have been granted access to our library.
-  <br>
-  Follow this url to get in: <%= login_url(@user.auth_token) %>
+Klik snel op volgende link om verder te gaan
+<br>
+<%= login_url(@user.auth_token) %>
+<br>
+Let op, deze link is slechts 24u geldig.
 </p>
+
+<p>Veel leesplezier</p>
