@@ -1,8 +1,8 @@
 h2
   - if @user
-    | Books uploaded by #{@user.name}
+    | Boeken geüpload door #{@user.name}
   - else
-    | All books
+    | Alle books
 
 = render "search" unless @user
 = render "books_list", books: @books

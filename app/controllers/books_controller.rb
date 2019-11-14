@@ -32,7 +32,7 @@ class BooksController < ApplicationController
     @book = current_user.books.new(book_params)
 
     if @book.save
-      redirect_to [:edit, @book], notice: 'Book was successfully created. Please check if the info is correct'
+      redirect_to [:edit, @book], notice: 'Het boek wat met succes aangemaakt. Gelieve nog eens alle info na te kijken en aan te vullen.'
     else
       render :new
     end
@@ -40,7 +40,7 @@ class BooksController < ApplicationController
 
   def update
     if @book.update(book_params)
-      redirect_to @book, notice: 'Book was successfully updated.'
+      redirect_to @book, notice: 'Het boek was met succes aangepast.'
     else
       render :edit
     end
@@ -48,7 +48,7 @@ class BooksController < ApplicationController
 
   def destroy
     @book.destroy
-    redirect_to books_url, notice: 'Book was successfully destroyed.'
+    redirect_to books_url, notice: 'Het boek is met succes verwijderd.'
   end
 
   private

@@ -1,0 +1,3 @@
+.mb-4.mt-3
+ - flash.each do |type, message_or_messages|
+  .alert class=bootstrap_notice_type(type) = message_or_messages

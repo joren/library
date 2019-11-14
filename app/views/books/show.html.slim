@@ -9,21 +9,21 @@
     .mt-3
       = link_to "download", rails_blob_path(@book.book), class: "btn btn-primary"
       - if @book.user == current_user
-        = link_to "edit", [:edit, @book], class: "btn btn-secondary ml-2"
+        = link_to "bewerk", [:edit, @book], class: "btn btn-secondary ml-2"
   .col-8
     = sanitize(@book.introduction)
 
     h4.mt-3 Info
     dl
-      dt Uploaded by
+      dt Geüpload door
       dd = @book.user.name
-      dt Uploaded at
+      dt Geüpload op
       dd = @book.created_at
       - if @book.pages
-        dt Pages
+        dt Pagina's
         dd = @book.pages
       - if @book.goodreads_rating
-        dt Rating:
+        dt Goodreads rating:
         dd = @book.goodreads_rating
       - if @book.goodreads_url
         dt Goodreads link
