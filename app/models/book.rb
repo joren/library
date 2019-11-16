@@ -6,6 +6,7 @@ class Book < ApplicationRecord
   belongs_to :user
 
   after_create :parse_epub!, if: -> { epub? }
+  before_update :complete_with_goodreads!, if: :title_changed?
 
   class << self
     def search(query)
@@ -51,18 +52,17 @@ class Book < ApplicationRecord
     end
 
     complete_with_goodreads! if isbn.present? || title.present?
+    save!
   end
 
   def complete_with_goodreads!
     goodreads_book = Goodreads::Client.new.book_by_title(title)
 
-    update!(
-      introduction: goodreads_book.description.to_s.gsub(/\u2028/, ''),
-      goodreads_rating: goodreads_book.average_rating,
-      goodreads_url: goodreads_book.url,
-      pages: goodreads_book.num_pages,
-      isbn: goodreads_book.isbn13
-    )
+    self.introduction = goodreads_book.description.to_s.gsub(/\u2028/, '')
+    self.goodreads_rating = goodreads_book.average_rating
+    self.goodreads_url = goodreads_book.url
+    self.pages = goodreads_book.num_pages
+    self.isbn = goodreads_book.isbn13
   rescue Goodreads::NotFound
     return true # Ignore when book not found
   end
