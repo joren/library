@@ -8,7 +8,7 @@ class BooksController < ApplicationController
   end
 
   def recent
-    @recent_books = Book.order(created_at: :desc).limit(10)
+    @recent_books = Book.order(created_at: :desc).limit(20)
   end
 
   def user
