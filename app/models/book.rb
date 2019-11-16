@@ -46,6 +46,8 @@ class Book < ApplicationRecord
         file.close
         file.unlink
       end
+    rescue EPUB::OCF::PhysicalContainer::NoEntry
+      # figure out what to do
     end
 
     complete_with_goodreads! if isbn.present? || title.present?
@@ -55,7 +57,7 @@ class Book < ApplicationRecord
     goodreads_book = Goodreads::Client.new.book_by_title(title)
 
     update!(
-      introduction: goodreads_book.description,
+      introduction: goodreads_book.description.gsub(/\u2028/, ''),
       goodreads_rating: goodreads_book.average_rating,
       goodreads_url: goodreads_book.url,
       pages: goodreads_book.num_pages,
