@@ -5,7 +5,8 @@
 
 .row
   .col-4.text-center
-    = image_tag @book.cover.variant(resize: "250x600"), alt: @book.title
+    - if @book.cover
+      = image_tag @book.cover.variant(resize: "250x600"), alt: @book.title
     .mt-3
       = link_to "download", rails_blob_path(@book.book), class: "btn btn-primary"
       - if @book.user == current_user

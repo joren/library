@@ -1,6 +1,7 @@
 .card.flex-md-row.mb-4.shadow-sm.h-md-250
-  = link_to book do
-    = image_tag(book.cover.variant(resize: "140x245"), alt: book.title, class: "card-img-left flex-auto d-none d-lg-block")
+  - if book.cover
+    = link_to book do
+      = image_tag(book.cover.variant(resize: "140x245"), alt: book.title, class: "card-img-left flex-auto d-none d-lg-block")
   .card-body.d-flex.flex-column.align-items-start.position-relative
     h5.card-title
       = link_to book.title, book, class: "text-dark"
