@@ -57,7 +57,7 @@ class Book < ApplicationRecord
     goodreads_book = Goodreads::Client.new.book_by_title(title)
 
     update!(
-      introduction: goodreads_book.description.gsub(/\u2028/, ''),
+      introduction: goodreads_book.description.to_s.gsub(/\u2028/, ''),
       goodreads_rating: goodreads_book.average_rating,
       goodreads_url: goodreads_book.url,
       pages: goodreads_book.num_pages,
