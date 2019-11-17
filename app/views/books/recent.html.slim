@@ -6,3 +6,6 @@ h2 Recente boeken
     .col-md-6
       .card-deck
         = render "book_card", book: book
+.row
+  .col-md-12
+    = paginate(@recent_books)
