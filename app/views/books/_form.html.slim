@@ -1,10 +1,8 @@
 .border.rounded.p-3
   = form_with(model: book, local: true) do |form|
     - if book.errors.any?
-      div#error_explanation
-        h2
-          = pluralize(book.errors.count, "error")
-          | volgende problemen hebben voorkomen dat we het boek konden opslaan:
+      .border.border-danger.p-2
+        h4 Volgende problemen hebben voorkomen dat we het boek konden opslaan:
 
         ul
           - book.errors.full_messages.each do |message|

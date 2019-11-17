@@ -3,6 +3,8 @@ class Book < ApplicationRecord
   has_many_attached :images
   paginates_per 20
 
+  validates :book, attached: true, content_type: { in: 'application/epub+zip', message: "moet een epub formaat zijn" }
+
   belongs_to :user
 
   after_create :parse_epub!, if: -> { epub? }
