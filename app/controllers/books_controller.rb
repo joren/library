@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:edit, :update, :destroy, :toggle_read]
+  before_action :set_my_book, only: [:edit, :update, :destroy]
+  before_action :set_book, only: [:show, :toggle_read]
 
   def index
     @books = Book.order(created_at: :desc)
@@ -18,7 +19,6 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:id])
   end
 
   def new
@@ -61,8 +61,12 @@ class BooksController < ApplicationController
   end
 
   private
-    def set_book
+    def set_my_book
       @book = current_user.books.find(params[:id])
+    end
+
+    def set_book
+      @book = Book.find(params[:id])
     end
 
     def book_params
