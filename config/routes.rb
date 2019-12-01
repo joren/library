@@ -4,6 +4,9 @@ Rails.application.routes.draw do
       get :recent
       get "from/:user_id", to: "books#user", as: "user"
     end
+    member do
+      post "toggle_read"
+    end
   end
   resources :authentications, only: [:new, :create]
 
