@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:edit, :update, :destroy]
+  before_action :set_book, only: [:edit, :update, :destroy, :toggle_read]
 
   def index
     @books = Book.order(created_at: :desc)
@@ -49,6 +49,15 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     redirect_to books_url, notice: 'Het boek is met succes verwijderd.'
+  end
+
+  def toggle_read
+    if current_user.read_books.exists?(@book.id)
+      current_user.read_books.destroy(@book)
+    else
+      current_user.read_books << @book
+    end
+    redirect_to @book
   end
 
   private

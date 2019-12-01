@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :books
+  has_and_belongs_to_many :read_books, join_table: :users_read_books, class_name: "Book", foreign_key: :book_id, association_foreign_key: :user_id
 
   validates :email, :name, presence: true, uniqueness: true
 
