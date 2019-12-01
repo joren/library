@@ -12,8 +12,10 @@ class Book < ApplicationRecord
   before_update :complete_with_goodreads!, if: :title_changed?
 
   class << self
-    def search(query)
-      where("title LIKE :query OR author LIKE :query", query: "%#{query}%")
+    def search(query, options)
+      results = where("title LIKE :query OR author LIKE :query", query: "%#{query}%")
+      results = results.left_outer_joins(:read_by_users).where("users_read_books.book_id IS NULL") if options.try(:dig, :hide_read)
+      results
     end
   end
 

@@ -3,7 +3,7 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.order(created_at: :desc)
-    @books = @books.search(params[:q]) if params[:q].present?
+    @books = @books.search(params[:q], params[:search_options]) if params[:q].present?
     @books = @books.page(params[:page])
   end
 
