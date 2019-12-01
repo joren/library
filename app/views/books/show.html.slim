@@ -1,7 +1,11 @@
+- read = current_user.read_books.exists?(@book.id)
 .row.mt-3
   .col-4
   .col-8
-    h2 = @book.title
+    div
+      span.h2.mr-2 = @book.title
+      - if read
+        span.badge.badge-success.badge-pill gelezen
 
 .row
   .col-4.text-center
@@ -13,7 +17,6 @@
         - if @book.user == current_user
           = link_to "bewerk", [:edit, @book], class: "btn btn-secondary ml-2 btn-sm"
           = link_to "verwijder", @book, method: :delete, data: { confirm: "Ben je zeker dat je dit boek wil verwijderen?" }, class: "btn btn-secondary ml-2 btn-sm"
-        - read = current_user.read_books.exists?(@book.id)
         = link_to "Markeer als #{read ? 'ongelezen' : 'gelezen'}", [:toggle_read, @book], method: :post, class: "btn btn-secondary btn-sm ml-2"
   .col-8
     = sanitize(@book.introduction)
