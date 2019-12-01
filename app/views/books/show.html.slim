@@ -9,12 +9,12 @@
       = image_tag @book.cover.variant(resize: "250x600"), alt: @book.title
     .mt-3
       = link_to "download", rails_blob_path(@book.book), class: "btn btn-primary", data: { confirm: "Let op, deel dit boek aub niet met andere mensen!"}
-      - if @book.user == current_user
-        .mt-1
+      .mt-1
+        - if @book.user == current_user
           = link_to "bewerk", [:edit, @book], class: "btn btn-secondary ml-2 btn-sm"
           = link_to "verwijder", @book, method: :delete, data: { confirm: "Ben je zeker dat je dit boek wil verwijderen?" }, class: "btn btn-secondary ml-2 btn-sm"
-          - read = current_user.read_books.exists?(@book.id)
-          = link_to "Markeer als #{read ? 'ongelezen' : 'gelezen'}", [:toggle_read, @book], method: :post, class: "btn btn-secondary btn-sm ml-2"
+        - read = current_user.read_books.exists?(@book.id)
+        = link_to "Markeer als #{read ? 'ongelezen' : 'gelezen'}", [:toggle_read, @book], method: :post, class: "btn btn-secondary btn-sm ml-2"
   .col-8
     = sanitize(@book.introduction)
 
