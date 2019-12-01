@@ -36,3 +36,15 @@
       - if @book.goodreads_url
         dt Goodreads link
         dd = link_to @book.goodreads_url, @book.goodreads_url, target: "_blank"
+
+    h4 Gelezen door
+
+    - if @book.read_by_users.any?
+      | Dit boek werd als gelezen door:
+      ul
+        - @book.read_by_users.each do |user|
+          li = link_to user.name, [:user, :books, user_id: user]
+    - else
+      | Dit boek werd nog door niemand gelezen.
+      =<> link_to "Download", rails_blob_path(@book.book),  data: { confirm: "Let op, deel dit boek aub niet met andere mensen!"}
+      | het boek en lees het boek als eerste.
