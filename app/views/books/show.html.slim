@@ -12,7 +12,7 @@
     - if @book.cover
       = image_tag @book.cover.variant(resize: "250x600"), alt: @book.title
     .mt-3
-      = link_to "download", rails_blob_path(@book.book), class: "btn btn-primary", data: { confirm: "Let op, deel dit boek aub niet met andere mensen!"}
+      = link_to "download", [:download, @book], class: "btn btn-primary", data: { confirm: "Let op, deel dit boek aub niet met andere mensen!"}, target: :_blank
       .mt-1
         - if @book.user == current_user
           = link_to "bewerk", [:edit, @book], class: "btn btn-secondary ml-2 btn-sm"
@@ -23,28 +23,29 @@
 
     h4.mt-3 Info
     dl
-      dt Geüpload door
-      dd = @book.user.name
-      dt Geüpload op
-      dd = @book.created_at
+      dt Auteur
+      dd = @book.author
       - if @book.pages
         dt Pagina's
         dd = @book.pages
-      - if @book.goodreads_rating
-        dt Goodreads rating:
-        dd = @book.goodreads_rating
       - if @book.goodreads_url
         dt Goodreads link
         dd = link_to @book.goodreads_url, @book.goodreads_url, target: "_blank"
 
     h4 Gelezen door
-
     - if @book.read_by_users.any?
-      | Dit boek werd als gelezen door:
-      ul
-        - @book.read_by_users.each do |user|
-          li = link_to user.name, [:user, :books, user_id: user]
+      = @book.read_by_users.map { |u| link_to(u.name, [:user, :books, user_id: u]) }.to_sentence.html_safe
     - else
       | Dit boek werd nog door niemand gelezen.
-      =<> link_to "Download", rails_blob_path(@book.book),  data: { confirm: "Let op, deel dit boek aub niet met andere mensen!"}
+      =<> link_to "Download", [:download, @book],  data: { confirm: "Let op, deel dit boek aub niet met andere mensen!"}, target: :_blank
       | het boek en lees het boek als eerste.
+
+    h4.mt-3 Laatste 10 acties
+    dl
+      - @book.user_actions.order(created_at: :desc).limit(10).each do |action|
+        dd
+          => t("actions.#{action.action.sub('_', '.')}")
+          | door
+          =<> link_to action.user.name, [:user, :books, user_id: action.user]
+          | op
+          =< action.created_at
