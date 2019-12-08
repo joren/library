@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       get "from/:user_id", to: "books#user", as: "user"
     end
     member do
+      get :download
       post "toggle_read"
     end
   end

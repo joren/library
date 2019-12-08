@@ -7,6 +7,7 @@ class Book < ApplicationRecord
 
   belongs_to :user
   has_and_belongs_to_many :read_by_users, join_table: :users_read_books, class_name: "User", foreign_key: :user_id, association_foreign_key: :book_id
+  has_many :user_actions
 
   after_create :parse_epub!, if: -> { epub? }
   before_update :complete_with_goodreads!, if: :title_changed?

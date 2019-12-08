@@ -1,4 +1,9 @@
 nl:
+  actions:
+    book:
+      read: Gelezen
+      downloaded: Gedownload
+      uploaded: Geüpload
   views:
     pagination:
       first: "&laquo; Eerste"

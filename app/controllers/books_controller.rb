@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_my_book, only: [:edit, :update, :destroy]
-  before_action :set_book, only: [:show, :toggle_read]
+  before_action :set_book, only: [:show, :toggle_read, :download]
 
   def index
     @books = Book.order(created_at: :desc)
@@ -21,6 +21,11 @@ class BooksController < ApplicationController
   def show
   end
 
+  def download
+    UserAction.book_downloaded!(user: current_user, book: @book)
+    send_data @book.book.download, filename: @book.book.filename.to_s, content_type: @book.book.content_type
+  end
+
   def new
     @book = Book.new
   end
@@ -32,6 +37,7 @@ class BooksController < ApplicationController
     @book = current_user.books.new(book_params)
 
     if @book.save
+      UserAction.book_uploaded!(user: current_user, book: @book)
       redirect_to [:edit, @book], notice: 'Het boek wat met succes aangemaakt. Gelieve nog eens alle info na te kijken en aan te vullen.'
     else
       render :new
@@ -56,20 +62,22 @@ class BooksController < ApplicationController
       current_user.read_books.destroy(@book)
     else
       current_user.read_books << @book
+      UserAction.book_read!(user: current_user, book: @book)
     end
     redirect_to @book
   end
 
   private
-    def set_my_book
-      @book = current_user.books.find(params[:id])
-    end
 
-    def set_book
-      @book = Book.find(params[:id])
-    end
+  def set_my_book
+    @book = current_user.books.find(params[:id])
+  end
 
-    def book_params
-      params.require(:book).permit(:title, :introduction, :book, :author, :cover_id)
-    end
+  def set_book
+    @book = Book.find(params[:id])
+  end
+
+  def book_params
+    params.require(:book).permit(:title, :introduction, :book, :author, :cover_id)
+  end
 end
