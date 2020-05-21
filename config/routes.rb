@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
   end
   resources :authentications, only: [:new, :create]
+  resource :user, only: [:show, :update]
 
   get "/login/:auth_token", to: "sessions#create", as: "login"
   get "/logout", to: "sessions#destroy", as: "logout"

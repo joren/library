@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_08_142432) do
+ActiveRecord::Schema.define(version: 2020_05_17_134422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,9 @@ ActiveRecord::Schema.define(version: 2019_12_08_142432) do
     t.boolean "can_invite_users", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "notify_book_read", default: true
+    t.boolean "notify_book_downloaded", default: true
+    t.boolean "notify_book_uploaded", default: true
   end
 
   create_table "users_read_books", id: false, force: :cascade do |t|

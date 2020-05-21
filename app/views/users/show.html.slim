@@ -1,0 +1,13 @@
+h1 = t("user.settings.title")
+
+.border.rounded.p-3
+  = form_with(model: @user, local: true) do |form|
+    .form-group
+      h3 = t("user.notifications.title")
+      p = t("user.notifications.info")
+      - %w(read downloaded uploaded).each do |action|
+        .form-check
+          = form.check_box "notify_book_#{action}", class: "form-check-input"
+          = form.label "notify_book_#{action}", t("user.notifications.#{action}.label"), class: "form-check-label"
+          small.form-text.text-muted = t("user.notifications.#{action}.help")
+    = form.submit t("user.settings.submit"), class: "btn btn-primary"

@@ -14,6 +14,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
           a#navbarDropdown.nav-link.dropdown-toggle.btn.btn-link aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
             = current_user.name.titleize
           .dropdown-menu aria-labelledby="navbarDropdown"
+            = link_to "Settings", :user, class: "dropdown-item"
             = link_to "Mijn boeken", [:user, :books, user_id: current_user], class: "dropdown-item"
             .dropdown-divider
             = link_to "Uitloggen", :logout, class: "dropdown-item"

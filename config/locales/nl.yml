@@ -4,6 +4,23 @@ nl:
       read: Gelezen
       downloaded: Gedownload
       uploaded: Geüpload
+  user:
+    settings:
+      title: Instellingen
+      submit: Sla aanpassingen op
+      saved: Je nieuwe instellingen werden opgeslaan
+    notifications:
+      title: Email notificaties
+      info: Selecteer voor welke acties je graag een email wil ontvangen
+      downloaded:
+        label: Je boek werd gedownload.
+        help: Ontvang een email wanneer iemand een van jouw boeken download.
+      read:
+        label: Als gelezen gemarkeerd
+        help: Ontvang een email wanneer iemand een van jouw boeken heeft gemarkeerd als gelezen.
+      uploaded:
+        label: Nieuw boek toegevoegd
+        help: Ontvange een email wanneer iemand anders een nieuw boek toegevoegd heeft aan de bibliotheek.
   views:
     pagination:
       first: "&laquo; Eerste"
