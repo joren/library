@@ -14,6 +14,6 @@ class User < ApplicationRecord
   end
 
   def send_welcome_email
-    Mailer.user_welcome(self).deliver_now
+    UserMailer.user_welcome(self).deliver_now
   end
 end

@@ -10,7 +10,7 @@ class AuthenticationsController < ApplicationController
       if user
         user.generate_auth_token
         user.save!
-        Mailer.user_login_requested(user).deliver_now
+        UserMailer.user_login_requested(user).deliver_now
       end
       redirect_to [:new, :authentication], notice: "Er is een email onderweg met daarin een link om in te loggen."
     else

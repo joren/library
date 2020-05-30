@@ -1,7 +1,4 @@
-class Mailer < ActionMailer::Base
-  default from: 'books@joren.gent'
-  layout 'mailer'
-
+class UserMailer < ApplicationMailer
   def user_login_requested(user)
     @user = user
 
