@@ -22,7 +22,7 @@ class BooksController < ApplicationController
   end
 
   def download
-    UserAction.book_downloaded!(user: current_user, book: @book)
+    BookNotificationAction.new(@book).trigger_downloaded(current_user)
     send_data @book.book.download, filename: @book.book.filename.to_s, content_type: @book.book.content_type
   end
 
@@ -37,7 +37,7 @@ class BooksController < ApplicationController
     @book = current_user.books.new(book_params)
 
     if @book.save
-      UserAction.book_uploaded!(user: current_user, book: @book)
+      BookNotificationAction.new(@book).trigger_uploaded
       redirect_to [:edit, @book], notice: 'Het boek wat met succes aangemaakt. Gelieve nog eens alle info na te kijken en aan te vullen.'
     else
       render :new
@@ -62,7 +62,7 @@ class BooksController < ApplicationController
       current_user.read_books.destroy(@book)
     else
       current_user.read_books << @book
-      UserAction.book_read!(user: current_user, book: @book)
+      BookNotificationAction.new(@book).trigger_read(current_user)
     end
     redirect_to @book
   end
