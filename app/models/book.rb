@@ -62,6 +62,8 @@ class Book < ApplicationRecord
   end
 
   def complete_with_goodreads!
+    return true # TODO: find a workaround now that Goodread has disabled their API
+
     goodreads_book = Goodreads::Client.new.book_by_title(title)
 
     self.introduction = goodreads_book.description.to_s.gsub(/\u2028/, '')
