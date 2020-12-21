@@ -38,8 +38,9 @@ class Book < ApplicationRecord
         epub_book = EPUB::Parser.parse(file)
 
         self.update(
-          title: epub_book.title,
+          title: epub_book.title.to_s,
           isbn: epub_book.metadata.unique_identifier.to_s,
+          introduction: epub_book.description.to_s,
           author: epub_book.metadata.creators.join(", ")
         )
 
