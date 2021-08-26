@@ -12,10 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_05_17_134422) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "active_storage_attachments", force: :cascade do |t|
+  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.bigint "record_id", null: false
@@ -25,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_05_17_134422) do
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", force: :cascade do |t|
+  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -36,7 +33,7 @@ ActiveRecord::Schema.define(version: 2020_05_17_134422) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "books", force: :cascade do |t|
+  create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "title"
     t.text "introduction"
     t.string "isbn"
@@ -51,7 +48,7 @@ ActiveRecord::Schema.define(version: 2020_05_17_134422) do
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 
-  create_table "user_actions", force: :cascade do |t|
+  create_table "user_actions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "book_id"
     t.string "action"
@@ -61,7 +58,7 @@ ActiveRecord::Schema.define(version: 2020_05_17_134422) do
     t.index ["user_id"], name: "index_user_actions_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "email", null: false
     t.string "name", null: false
     t.string "auth_token"
@@ -74,7 +71,7 @@ ActiveRecord::Schema.define(version: 2020_05_17_134422) do
     t.boolean "notify_book_uploaded", default: true
   end
 
-  create_table "users_read_books", id: false, force: :cascade do |t|
+  create_table "users_read_books", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "book_id", null: false
   end

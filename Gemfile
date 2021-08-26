@@ -14,6 +14,7 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'mini_magick', '~> 4.8'
 gem 'mini_racer', '~> 0.4.0'
+gem 'mysql2', '~> 0.5.2'
 gem 'puma', '~> 4.0'
 gem 'rails', '~> 5.2.3'
 gem 'sass-rails', '~> 5.0'
@@ -26,7 +27,6 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry', '~> 0.12'
   gem 'letter_opener', '~> 1.7'
-  gem 'pg', '~> 1.1'
 end
 
 group :development do
@@ -42,8 +42,4 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-end
-
-group "production" do
-  gem 'mysql2', '~> 0.5.2'
 end
