@@ -3,7 +3,7 @@ class Book < ApplicationRecord
   has_many_attached :images
   paginates_per 20
 
-  validates :book, attached: true, content_type: { in: 'application/epub+zip', message: "moet een epub formaat zijn" }
+  validates :book, attached: true, content_type: { in: ['application/epub+zip', 'application/zip'], message: "moet een epub formaat zijn" }
 
   belongs_to :user
   has_and_belongs_to_many :read_by_users, join_table: :users_read_books, class_name: "User", foreign_key: :user_id, association_foreign_key: :book_id
