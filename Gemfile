@@ -1,23 +1,23 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
+ruby '>= 3.0'
 
 gem 'active_storage_validations'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.3.1'
 gem 'coffee-rails', '~> 5.0.0'
-gem 'epub-parser', '~> 0.4.0'
+gem 'epub-parser'
 gem 'goodreads'
-gem 'rails-i18n', '~> 5.1', '>= 5.1.3'
+gem 'rails-i18n', '~> 7.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'mini_magick', '~> 4.8'
-gem 'mini_racer', '~> 0.4.0'
+gem 'mini_racer'
 gem 'mysql2', '~> 0.5.3'
-gem 'puma', '~> 4.0'
-gem 'rails', '~> 5.2.8'
-gem 'sass-rails', '~> 5.0'
+gem 'puma', '>= 5.0'
+gem 'rails', '~> 7.1.0'
+gem 'sass-rails', '>= 6'
 gem 'slim', '~> 4.0', '>= 4.0.1'
 gem 'slim-rails', '~> 3.2'
 gem 'turbolinks', '~> 5'
@@ -38,8 +38,8 @@ group :development do
 
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-watcher-listen', '~> 2.0'
 end
